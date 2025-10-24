@@ -1,0 +1,221 @@
+---
+title: "Problem2"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source_code: embed
+    theme: flatly
+---
+
+<style>
+.navbar {
+  font-family: "Google Sans", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 18px;   
+  font-weight: 500;
+}
+
+.navbar-nav > li > a,
+.navbar-brand {
+  font-size: 18px;   
+  font-weight: 500;
+  padding-top: 16px;   
+  padding-bottom: 16px;
+}
+</style>
+
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family:"Google Sans","Helvetica Neue","Segoe UI",Arial,sans-serif;
+  font-size:18px;
+  line-height:1.7;
+  color:#222;
+  background:#fafafa;
+}
+
+h2, h3 {
+  font-family:"Google Sans","Helvetica Neue","Segoe UI",Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+
+</style>
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+
+data("ny_noaa")
+
+set.seed(123)
+noaa_clean <- ny_noaa %>%
+  sample_n(50000) %>% 
+  filter(!is.na(tmax), !is.na(tmin), !is.na(prcp), !is.na(snow)) %>%
+  separate(date, into = c("year", "month", "day"), sep = "-", remove = FALSE) %>%
+  mutate(
+    tmax = as.numeric(tmax) / 10, 
+    tmin = as.numeric(tmin) / 10,
+    prcp = prcp / 10, 
+    year = as.numeric(year),
+    month = as.numeric(month)
+  ) 
+```
+
+### NY NOAA Weather Data
+
+This dashboard visualizes weather patterns from the **NY NOAA dataset** 
+
+**Data Processing:**
+
+- Filtered out missing values
+- Converted temperatures from tenths of °C to °C
+- Converted precipitation from tenths of mm to mm
+
+
+**Visualizations:**
+
+This dashboard includes four interactive Plotly charts demonstrating different plot types: box plots, scatter plots, line plots, and bar plots.
+
+Visualizations {data-width=500}
+-----------------------------------------------------------------------
+
+### Temperature Range by Month (Box Plot)
+
+```{r}
+# Box plot of temperature by month
+plot_box <- noaa_clean %>%
+  pivot_longer(cols = c(tmax, tmin), 
+               names_to = "temp_type", 
+               values_to = "temperature") %>%
+  mutate(
+    temp_type = recode(temp_type, 
+                       tmax = "Maximum Temperature",
+                       tmin = "Minimum Temperature"),
+    month = factor(month, levels = 1:12, 
+                   labels = month.abb)
+  ) %>%
+  plot_ly(x = ~month, y = ~temperature, color = ~temp_type,
+          type = "box",
+          colors = c("#E74C3C", "#3498DB")) %>%
+  layout(
+    title = "",
+    xaxis = list(title = "Month"),
+    yaxis = list(title = "Temperature (°C)"),
+    legend = list(title = list(text = "Type")),
+    boxmode = "group"
+  )
+
+plot_box
+```
+
+### Precipitation vs Snowfall (Scatter Plot)
+
+```{r}
+# Scatter plot of precipitation vs snowfall
+plot_scatter <- noaa_clean %>%
+  filter(snow > 0, snow < 100, prcp > 0) %>% 
+  plot_ly(x = ~prcp, y = ~snow, 
+          type = "scatter",
+          mode = "markers",
+          marker = list(
+            size = 5,
+            color = ~tmax,
+            colorscale = "Viridis",
+            showscale = TRUE,
+            colorbar = list(title = "Max Temp (°C)")
+          ),
+          text = ~paste("Precipitation:", round(prcp, 1), "mm<br>",
+                       "Snowfall:", snow, "mm<br>",
+                       "Max Temp:", round(tmax, 1), "°C"),
+          hoverinfo = "text") %>%
+  layout(
+    title = "",
+    xaxis = list(title = "Precipitation (mm)"),
+    yaxis = list(title = "Snowfall (mm)")
+  )
+
+plot_scatter
+```
+
+More Visualizations {data-width=500}
+-----------------------------------------------------------------------
+
+### Average Temperature Trend by Year (Line Plot)
+
+```{r}
+# Line plot of average temperature over time
+temp_trend <- noaa_clean %>%
+  group_by(year, month) %>%
+  summarise(
+    avg_tmax = mean(tmax, na.rm = TRUE),
+    avg_tmin = mean(tmin, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(date = as.Date(paste(year, month, "01", sep = "-")))
+
+plot_line <- plot_ly(temp_trend) %>%
+  add_trace(x = ~date, y = ~avg_tmax, 
+            type = "scatter", mode = "lines",
+            name = "Max Temperature",
+            line = list(color = "#E74C3C", width = 2)) %>%
+  add_trace(x = ~date, y = ~avg_tmin,
+            type = "scatter", mode = "lines",
+            name = "Min Temperature",
+            line = list(color = "#3498DB", width = 2)) %>%
+  layout(
+    title = "",
+    xaxis = list(title = "Date"),
+    yaxis = list(title = "Average Temperature (°C)"),
+    hovermode = "x unified"
+  )
+
+plot_line
+```
+
+### Snowfall Distribution by Season (Bar Plot)
+
+```{r}
+# Bar plot of snowfall by season
+snow_season <- noaa_clean %>%
+  filter(snow > 0) %>%
+  mutate(
+    season = case_when(
+      month %in% c(12, 1, 2) ~ "Winter",
+      month %in% c(3, 4, 5) ~ "Spring",
+      month %in% c(6, 7, 8) ~ "Summer",
+      month %in% c(9, 10, 11) ~ "Fall"
+    ),
+    season = factor(season, levels = c("Winter", "Spring", "Summer", "Fall"))
+  ) %>%
+  group_by(season) %>%
+  summarise(
+    avg_snow = mean(snow, na.rm = TRUE),
+    total_days = n(),
+    .groups = "drop"
+  )
+
+plot_bar <- plot_ly(snow_season, 
+                    x = ~season, 
+                    y = ~avg_snow,
+                    type = "bar",
+                    marker = list(
+                      color = c("#5DADE2", "#85C1E2", "#F9E79F", "#F8B739"),
+                      line = list(color = "rgba(0,0,0,0.8)", width = 1.5)
+                    ),
+                    text = ~paste("Days:", total_days, "<br>",
+                                 "Avg Snow:", round(avg_snow, 1), "mm"),
+                    hoverinfo = "text") %>%
+  layout(
+    title = "",
+    xaxis = list(title = "Season"),
+    yaxis = list(title = "Average Snowfall (mm)")
+  )
+
+plot_bar
+```

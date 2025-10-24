@@ -5,6 +5,22 @@ output:
     theme: flatly
     highlight: textmate
 ---
+<style>
+.navbar {
+  font-family: "Google Sans", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 18px;    
+  font-weight: 500;
+}
+
+.navbar-nav > li > a,
+.navbar-brand {
+  font-size: 18px;      
+  font-weight: 500;
+  padding-top: 16px;   
+  padding-bottom: 16px;
+}
+</style>
+
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 

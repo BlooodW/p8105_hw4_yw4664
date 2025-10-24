@@ -5,6 +5,24 @@ output:
     theme: flatly
     highlight: textmate
 ---
+<style>
+.navbar {
+  font-family: "Google Sans", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 18px;   
+  font-weight: 500;
+}
+
+.navbar-nav > li > a,
+.navbar-brand {
+  font-size: 18px;   
+  font-weight: 500;
+  padding-top: 16px;   
+  padding-bottom: 16px;
+}
+</style>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* Page */
@@ -18,33 +36,29 @@ body {
   padding: 0;
 }
 
-/* Header section — clean white background now */
 .header-section {
-  background-color: transparent;   /* 去掉蓝色背景 */
-  padding: 100px 20px 20px;        /* 上边距留空间避免遮挡 */
+  background-color: transparent; 
+  padding: 100px 20px 20px;
   margin: 0;
   width: 100%;
   box-sizing: border-box;
 }
 
-/* Main content container */
 .main-content {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Remove default title styling */
 #header {
   display: none;
 }
 
-/* Custom title */
 .custom-title {
   text-align: center;
   font-size: 72px;
   font-weight: 700;
-  color: #111;          /* 改为黑色字体 */
+  color: #111;  
   margin: 0;
   padding: 0;
   letter-spacing: 2px;
@@ -64,7 +78,6 @@ body {
   color: #555;
 }
 
-/* Headings */
 h1, h2, h3 {
   font-family: "Google Sans", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
   font-weight: 700;
@@ -79,7 +92,7 @@ h2 {
   font-size: 24px;
   margin-top: 40px;
   margin-bottom: 16px;
-  border-bottom: 2px solid #555;  /* 深灰分割线 */
+  border-bottom: 2px solid #555;
   padding-bottom: 6px;
 }
 
@@ -89,12 +102,10 @@ h3 {
   margin-bottom: 10px;
 }
 
-/* Sections */
 .section {
   margin: 36px 0;
 }
 
-/* Entries */
 .entry {
   display: flex;
   align-items: flex-start;
@@ -142,7 +153,6 @@ li {
   margin: 5px 0;
 }
 
-/* Links */
 a {
   color: #0d6efd;
   text-decoration: none;
