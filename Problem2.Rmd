@@ -69,7 +69,7 @@ noaa_clean <- ny_noaa %>%
 
 ### NY NOAA Weather Data
 
-This dashboard visualizes weather patterns from the **NY NOAA dataset** 
+Visualizing weather patterns from the **NY NOAA dataset** 
 
 **Data Processing:**
 
@@ -80,19 +80,19 @@ This dashboard visualizes weather patterns from the **NY NOAA dataset**
 
 **Visualizations:**
 
-This dashboard includes four interactive Plotly charts demonstrating different plot types: box plots, scatter plots, line plots, and bar plots.
+Including four interactive Plotly charts demonstrating different plot types: box plots, scatter plots, line plots, and bar plots.
 
 Visualizations {data-width=500}
 -----------------------------------------------------------------------
 
-### Temperature Range by Month (Box Plot)
+### Box Plot: Temperature Range by Month
 
 ```{r}
 # Box plot of temperature by month
-plot_box <- noaa_clean %>%
+plot_box <- noaa_clean |>
   pivot_longer(cols = c(tmax, tmin), 
                names_to = "temp_type", 
-               values_to = "temperature") %>%
+               values_to = "temperature") |>
   mutate(
     temp_type = recode(temp_type, 
                        tmax = "Maximum Temperature",
@@ -102,7 +102,7 @@ plot_box <- noaa_clean %>%
   ) %>%
   plot_ly(x = ~month, y = ~temperature, color = ~temp_type,
           type = "box",
-          colors = c("#E74C3C", "#3498DB")) %>%
+          colors = c("#E74C3C", "#3498DB")) |>
   layout(
     title = "",
     xaxis = list(title = "Month"),
@@ -114,12 +114,12 @@ plot_box <- noaa_clean %>%
 plot_box
 ```
 
-### Precipitation vs Snowfall (Scatter Plot)
+### Scatter Plot: Precipitation vs Snowfall
 
 ```{r}
 # Scatter plot of precipitation vs snowfall
-plot_scatter <- noaa_clean %>%
-  filter(snow > 0, snow < 100, prcp > 0) %>% 
+plot_scatter <- noaa_clean |>
+  filter(snow > 0, snow < 100, prcp > 0) |> 
   plot_ly(x = ~prcp, y = ~snow, 
           type = "scatter",
           mode = "markers",
@@ -133,7 +133,7 @@ plot_scatter <- noaa_clean %>%
           text = ~paste("Precipitation:", round(prcp, 1), "mm<br>",
                        "Snowfall:", snow, "mm<br>",
                        "Max Temp:", round(tmax, 1), "°C"),
-          hoverinfo = "text") %>%
+          hoverinfo = "text") |>
   layout(
     title = "",
     xaxis = list(title = "Precipitation (mm)"),
@@ -146,28 +146,28 @@ plot_scatter
 More Visualizations {data-width=500}
 -----------------------------------------------------------------------
 
-### Average Temperature Trend by Year (Line Plot)
+### Line Plot: Average Temperature Trend by Year
 
 ```{r}
 # Line plot of average temperature over time
-temp_trend <- noaa_clean %>%
-  group_by(year, month) %>%
+temp_trend <- noaa_clean |>
+  group_by(year, month) |>
   summarise(
     avg_tmax = mean(tmax, na.rm = TRUE),
     avg_tmin = mean(tmin, na.rm = TRUE),
     .groups = "drop"
-  ) %>%
+  ) |>
   mutate(date = as.Date(paste(year, month, "01", sep = "-")))
 
-plot_line <- plot_ly(temp_trend) %>%
+plot_line <- plot_ly(temp_trend) |>
   add_trace(x = ~date, y = ~avg_tmax, 
             type = "scatter", mode = "lines",
             name = "Max Temperature",
-            line = list(color = "#E74C3C", width = 2)) %>%
+            line = list(color = "#E74C3C", width = 2)) |>
   add_trace(x = ~date, y = ~avg_tmin,
             type = "scatter", mode = "lines",
             name = "Min Temperature",
-            line = list(color = "#3498DB", width = 2)) %>%
+            line = list(color = "#3498DB", width = 2)) |>
   layout(
     title = "",
     xaxis = list(title = "Date"),
@@ -178,12 +178,12 @@ plot_line <- plot_ly(temp_trend) %>%
 plot_line
 ```
 
-### Snowfall Distribution by Season (Bar Plot)
+### Bar Plot: Snowfall Distribution by Season 
 
 ```{r}
 # Bar plot of snowfall by season
-snow_season <- noaa_clean %>%
-  filter(snow > 0) %>%
+snow_season <- noaa_clean |>
+  filter(snow > 0) |>
   mutate(
     season = case_when(
       month %in% c(12, 1, 2) ~ "Winter",
@@ -193,7 +193,7 @@ snow_season <- noaa_clean %>%
     ),
     season = factor(season, levels = c("Winter", "Spring", "Summer", "Fall"))
   ) %>%
-  group_by(season) %>%
+  group_by(season) |>
   summarise(
     avg_snow = mean(snow, na.rm = TRUE),
     total_days = n(),
@@ -210,7 +210,7 @@ plot_bar <- plot_ly(snow_season,
                     ),
                     text = ~paste("Days:", total_days, "<br>",
                                  "Avg Snow:", round(avg_snow, 1), "mm"),
-                    hoverinfo = "text") %>%
+                    hoverinfo = "text") |>
   layout(
     title = "",
     xaxis = list(title = "Season"),
