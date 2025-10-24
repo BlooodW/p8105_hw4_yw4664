@@ -65,11 +65,18 @@ Hi! My name is **Yijun Wang**, and my UNI is **yw4664**. I’m a master student 
 This website was created for **P8105 Homework 4**, and it will serve as my personal homepage for course projects and professional materials.
 
 <center>
-<img src="img/yijunwang.jpg" width="60%">
+  <img src="img/yijunwang.jpg" width="60%">
+  <br>
+  <img src="img/anime.png" width="35%">
+  <p style="font-size:13px; color:#666;">
+    Illustration of me in anime style — drawn by my incredibly talented gf 💕
+  </p>
 </center>
 </div>
 
 <div class="section">
+
+
 ## About this site
 
 - The **Home** page (this page) gives a brief introduction.  
