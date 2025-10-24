@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Yijun Wang</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="cv.html">Resume</a>
+</li>
+<li>
+  <a href="mailto:&lt;yw4664@cumc.columbia.edu&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://github.com/BlooodW/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Yijun Wang</h1>
+
+</div>
+
+
+<!-- Fonts -->
+<p><link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"></p>
+<style>
+body {
+  font-family:"Google Sans","Helvetica Neue","Segoe UI",Arial,sans-serif;
+  font-size:18px;
+  line-height:1.7;
+  color:#222;
+  background:#fafafa;
+}
+
+h2, h3 {
+  font-family:"Google Sans","Helvetica Neue","Segoe UI",Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+
+/* Card-like section layout */
+.section {
+  margin:40px auto;
+  padding:28px;
+  max-width:980px;
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 6px 24px rgba(0,0,0,.06);
+}
+
+.section img {
+  border-radius:6px;
+  box-shadow:0 0 10px rgba(0,0,0,.12);
+  margin:22px 0 26px;
+}
+</style>
+<div id="welcome" class="section level2">
+<h2>Welcome</h2>
+<p>Hi! My name is <strong>Yijun Wang</strong>, and my UNI is
+<strong>yw4664</strong>. I’m a master student in
+<strong>Biostatistics</strong> at Columbia University.</p>
+<p>This website was created for <strong>P8105 Homework 4</strong>, and
+it will serve as my personal homepage for course projects and
+professional materials.</p>
+<center>
+<img src="img/yijunwang.jpg" width="60%">
+</center>
+</div>
+<div id="about-this-site" class="section level2">
+<h2>About this site</h2>
+<ul>
+<li><p>The <strong>Home</strong> page (this page) gives a brief
+introduction.</p></li>
+<li><p>The <strong>CV</strong> page contains my academic background and
+research experiences.</p></li>
+<li><p>You can also find my <strong>GitHub</strong> and
+<strong>email</strong> links in the navigation bar.</p></li>
+</ul>
+</div>
+<div id="research-interests" class="section level2">
+<h2>Research &amp; Interests</h2>
+<p>I’m interested in:</p>
+<ul>
+<li><p><strong>Functional circRNA annotation and
+analysis</strong></p></li>
+<li><p><strong>Statistical genetics and quantitative trait
+modeling</strong></p></li>
+<li><p><strong>Transcriptomic and multi-omics data
+analysis</strong></p></li>
+</ul>
+<p>My current research focuses on developing efficient computational
+tools for identifying and characterizing functional circRNAs, and
+integrating statistical models with high-throughput sequencing data.</p>
+<p>You can check out my GitHub project <strong><a
+href="https://github.com/BlooodW/circAnnoPipe">circAnnoPipe</a></strong>
+—</p>
+<p>an integrated pipeline for <strong>circRNA annotation</strong>,
+including:</p>
+<ul>
+<li><p>Prediction of <strong>circRNA–miRNA
+interactions</strong></p></li>
+<li><p>Identification of <strong>circRNA–RBP binding
+events</strong></p></li>
+<li><p>Evaluation of <strong>circRNA translational
+potential</strong></p></li>
+</ul>
+</div>
+<div id="more-about-me" class="section level2">
+<h2>More About Me</h2>
+<p>Although I’m technically Gen Z, I’ve always felt like <strong>an 80s
+guy at heart</strong>.</p>
+<p>I play <strong>electric guitar</strong> 🎸, mostly 80s
+<strong>progressive metal</strong>, and spend a lot of time fine-tuning
+tones and solos.</p>
+Here’s my gear:
+<center>
+<img src="img/gear.jpg" width="60%">
+</center>
+Here’s me playing:
+<center>
+<img src="img/playing.jpg" width="60%">
+</center>
+I also collect <strong>Transformers</strong> 🤖 from the 80s — they’re
+truly <em>more than meets the eye</em>.
+<center>
+<img src="img/transformers.jpg" width="60%">
+</center>
+<p>And yes, I always wear a <strong>pink hat</strong>, partly because
+I’m a little bald 😅,<br />
+but mostly because I want it to be my <strong>iconic look</strong>.</p>
+</div>
+<div id="quick-links" class="section level2">
+<h2>Quick Links</h2>
+<ul>
+<li>📄 <a href="cv.html">Curriculum Vitae (CV)</a><br />
+</li>
+<li>💻 <a href="https://github.com/BlooodW">GitHub</a><br />
+</li>
+<li>✉️ <a href="mailto:yw4664@cumc.columbia.edu">Email</a><br />
+</li>
+<li>🎸 <a href="https://space.bilibili.com/35001001">See Me
+Playing</a></li>
+</ul>
+</div>
+<div id="contact" class="section level2">
+<h2>Contact</h2>
+<p>If you’d like to get in touch, please reach me via email or
+GitHub.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

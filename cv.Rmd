@@ -1,0 +1,329 @@
+---
+title: "CV"
+output:
+  html_document:
+    theme: flatly
+    highlight: textmate
+---
+
+<style>
+/* Page */
+body {
+  font-family: "Google Sans", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #222;
+  background: #fafafa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header section — clean white background now */
+.header-section {
+  background-color: transparent;   /* 去掉蓝色背景 */
+  padding: 100px 20px 20px;        /* 上边距留空间避免遮挡 */
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Main content container */
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Remove default title styling */
+#header {
+  display: none;
+}
+
+/* Custom title */
+.custom-title {
+  text-align: center;
+  font-size: 72px;
+  font-weight: 700;
+  color: #111;          /* 改为黑色字体 */
+  margin: 0;
+  padding: 0;
+  letter-spacing: 2px;
+}
+
+/* Contact info */
+.contact-info {
+  text-align: center;
+  color: #555;
+  margin: 10px 0 0 0;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.contact-info a {
+  color: #555;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: "Google Sans", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  color: #111;
+}
+
+h1.title {
+  display: none !important;
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #555;  /* 深灰分割线 */
+  padding-bottom: 6px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Sections */
+.section {
+  margin: 36px 0;
+}
+
+/* Entries */
+.entry {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.entry-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.entry-title {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.entry-sub {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.entry-bullets {
+  margin: 8px 0 0 0;
+}
+
+.entry-date {
+  flex: 0 0 auto;
+  color: #888;
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 15px;
+}
+
+/* Lists */
+ul {
+  margin-top: 6px;
+  padding-left: 20px;
+}
+
+li {
+  margin: 5px 0;
+}
+
+/* Links */
+a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
+
+
+<div class="header-section">
+  <h1 class="custom-title">Yijun Wang</h1>
+</div>
+
+<div class="main-content">
+
+<div class="contact-info" style="text-align:center; font-size:17px; color:#555;">
+  4146 27th St, Apt 1122, Long Island City, 11101, New York ｜ (+1) 917-912-6932<br>
+  Guilin Road Alley 567 No 49 201, Shanghai, 200233, China ｜ (+86) 139-1722-8232<br>
+  <a href="mailto:yw4664@cumc.columbia.edu" style="color:#555; text-decoration:none;">
+    yw4664@cumc.columbia.edu
+  </a>
+</div>
+
+
+
+## EDUCATION
+
+<div class="entry">
+<div class="entry-main">
+<div class="entry-title">Shanghai Jiao Tong University</div>
+<div class="entry-sub">Bachelor of Science in Bioinformatics</div>
+<div class="entry-sub">School of Life Sciences and Biotechnology</div>
+<div class="entry-sub">Overall GPA: 3.3/4.3</div>
+<div class="entry-bullets">
+**Honors and Awards:**
+<ul>
+<li>Merit Student of Shanghai Jiao Tong University, 10/2023</li>
+<li>Outstanding Award at the Fifth Shanghai Jiao Tong University Student Life Science Innovation Competition, 12/2023</li>
+</ul>
+</div>
+</div>
+<div class="entry-date">09/2021 - 06/2025<br>Shanghai, China</div>
+</div>
+
+## PUBLICATION
+
+<div class="entry">
+<div class="entry-main">
+Huajing Chang, Shuaidi Wang and **Yijun Wang (co-first author)**, Correlation and Its Changing Characteristics in the Main Belt and Road Countries of Life Expectancy and GDP Per Capita from 1990 to 2020. *2023 3rd International Conference on Biomedical Engineering, Healthcare and Disease Prevention (BEHDP 2023)*
+
+Link: [https://drpress.org/ojs/index.php/HSET/article/view/9788](https://drpress.org/ojs/index.php/HSET/article/view/9788)
+</div>
+</div>
+
+## INTERNSHIP EXPERIENCE
+
+<div class="entry">
+<div class="entry-main">
+<div class="entry-title">OE Biotech</div>
+<div class="entry-sub">Platform Bioinformatics Engineering Intern | Bioinformatics Department</div>
+<div class="entry-bullets">
+<ul>
+<li>Process over 75 spatial transcriptomics projects using Linux systems and bioinformatics tools like Spaceranger and LoupeR</li>
+<li>Optimize computational workflows through multithreading techniques to overcome performance bottlenecks in high-resolution tissue image processing</li>
+<li>Adapt academic knowledge to meet commercial requirements, focusing on efficiency and practical solutions in complex real-world scenarios</li>
+</ul>
+</div>
+</div>
+<div class="entry-date">07/2024 - 10/2024<br>Shanghai, China</div>
+</div>
+
+## RESEARCH & PROJECT EXPERIENCES
+
+<div class="entry">
+<div class="entry-main">
+<div class="entry-title">Upgraded Development of Functional Circular RNA Prediction Method COL</div>
+<div class="entry-sub">Individual Project | Supervisor: Dr. Yong Ping & Dr. Chuan Xu | Graduation Project</div>
+<div class="entry-bullets">
+<ul>
+<li>Develop a functional circular RNA identification process incorporating annotation information, and study the mechanism of circular RNA in disease development through comparative experiments to enhance understanding of its functionality</li>
+<li>Create circular RNA annotation tools, apply the COL method to identify functional circular RNAs through control experiments, and compare and refine methods for functional circular RNA identification</li>
+</ul>
+</div>
+</div>
+<div class="entry-date">09/2024 - Present</div>
+</div>
+
+<div class="entry">
+<div class="entry-main">
+<div class="entry-title">Brain Tumor Segmentation</div>
+<div class="entry-sub">Partnered Project | Supervisor: Dr. Xiaolei Wang | Project of Biological Big Data Analysis Course</div>
+<div class="entry-bullets">
+<ul>
+<li>Developed an automated system for brain tumor segmentation using multimodal MRI data analysis</li>
+<li>Implemented data augmentation techniques and optimized training parameters to address insufficient datasets and long training times</li>
+<li>Enhanced model performance by introducing regularization techniques and adjusting architecture to prevent overfitting</li>
+</ul>
+</div>
+</div>
+<div class="entry-date">02/2024 - 06/2024</div>
+</div>
+
+<div class="entry">
+<div class="entry-main">
+<div class="entry-title">The Evolution Study of the Variable Polyadenylation Factor in Fungi</div>
+<div class="entry-sub">Partnered Project | Supervisor: Dr. Chuan Xu | Xu Lab Shanghai Jiao Tong University</div>
+<div class="entry-bullets">
+<ul>
+<li>Investigated the diversity and regulatory mechanisms of APA and ATS in fungi, analyzing 217 fungal species and 7 Metarhizium species</li>
+<li>Managed and analyzed large-scale genomic data by transitioning to Linux command-line tools and developing custom scripts to improve workflow efficiency</li>
+<li>Identified significant sequence variations and five key ATS trans-acting factors, providing new insights into APA/ATS mechanisms</li>
+</ul>
+</div>
+</div>
+<div class="entry-date">08/2023 - 10/2024</div>
+</div>
+
+<div class="entry">
+<div class="entry-main">
+<div class="entry-title">Correlation and Its Changing Characteristics in the Main Belt and Road Countries of Life Expectancy and GDP Per Capita from 1990 to 2020</div>
+<div class="entry-sub">Team Leader | Supervisor: Prof. Todd Ogden (Columbia University) | Online Research Seminar</div>
+<div class="entry-bullets">
+<ul>
+<li>Conducted a study on the correlation between life expectancy and per capita GDP in countries along the Belt and Road Initiative</li>
+<li>Integrated perspectives from both health and economics, employing correlation and regression analyses to delve into the intricate relationship between these two factors and bridge the gap in policy considerations</li>
+<li>Applied the OBOR framework to examine the distinct economic development levels of participating countries and reveal the evolving trends in this relationship over the years through a longitudinal analysis</li>
+</ul>
+</div>
+</div>
+<div class="entry-date">02/2023 - 04/2023</div>
+</div>
+
+<div class="entry">
+<div class="entry-main">
+<div class="entry-title">Research on Algorithm for Optimized mRNA Design Improves Stability and Immunogenicity</div>
+<div class="entry-sub">Team Member | Supervisor: Dr. Jun He | National Engineering Research Center for Advanced Manufacturing of Pharmaceuticals of the China General Academy of Pharmaceutical Industry</div>
+<div class="entry-bullets">
+<ul>
+<li>Studied the mRNA design optimization algorithm presented in the paper titled "Algorithm for Optimized mRNA Design Improves Stability and Immunogenicity", in which Baidu USA's team introduced the innovative Linear Design algorithm, marking the first application of AI to mRNA drug algorithms, providing a significant advancement in the field</li>
+<li>Endeavored to replicate and enhance the algorithm, seeking to improve its efficiency and effectiveness</li>
+</ul>
+</div>
+</div>
+<div class="entry-date">07/2023 - 09/2023</div>
+</div>
+
+## EXTRACURRICULAR ACTIVITIES
+
+<div class="entry">
+<div class="entry-main">
+<div class="entry-title">Shanghai Jiao Tong University Art Center</div>
+<div class="entry-sub">Head of the Music Department</div>
+<div class="entry-bullets">
+<ul>
+<li>Responsible for the recruitment at the Art Center, training in the music department, and overall coordination of various events such as orientation parties, singer competitions, and the sound engineering for these events</li>
+<li>Organized publishing a campus original music album and participated in the creation and production of multiple songs</li>
+</ul>
+</div>
+</div>
+<div class="entry-date">09/2023 - 06/2024</div>
+</div>
+
+<div class="entry">
+<div class="entry-main">
+<div class="entry-title">Director of Shanghai Jiao Tong University Oasis Music Festival</div>
+<div class="entry-bullets">
+<ul>
+<li>Directed the Oasis Music Festival at Shanghai Jiao Tong University which has been upheld for a decade - a distinctive cultural event that authentically represents a societal music festival within the university through consistently hosting renowned bands and delivering high-quality performances for students</li>
+<li>Oversaw the overall coordination of the music festival, including determining the theme, contacting and inviting bands, overseeing finances, recruiting staff, and managing sound engineering and stage coordination on-site</li>
+</ul>
+</div>
+</div>
+<div class="entry-date">12/2022 - 04/2023<br>05/2024 - 11/2024</div>
+</div>
+
+## ADDITIONAL INFORMATION
+
+**Software and Programming Skills:** C++, Python, R, Linux
+
+**Hobbies:** Electric Guitar, Music Production
+
+</div>

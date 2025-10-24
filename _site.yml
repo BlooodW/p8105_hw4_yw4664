@@ -1,0 +1,13 @@
+name: "yw4664"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "Resume"
+      href: cv.html
+    - icon: fa-envelope fa-lg
+      href: mailto:<yw4664@cumc.columbia.edu>
+    - icon: fa-github fa-lg
+      href: http://github.com/BlooodW/
+output:
+  html_document
