@@ -81,7 +81,7 @@ This website was created for **P8105 Homework 4**, and it will serve as my perso
 
 - The **Home** page (this page) gives a brief introduction.  
 
-- The **CV** page contains my academic background and research experiences.  
+- The **Resume** page contains my academic background and research experiences.  
 
 - You can also find my **GitHub** and **email** links in the navigation bar.
 </div>
@@ -137,7 +137,7 @@ but mostly because I want it to be my **iconic look**.
 
 <div class="section">
 ## Quick Links
-- 📄 [Curriculum Vitae (CV)](cv.html)  
+- 📄 [Resume](cv.html)  
 - 💻 [GitHub](https://github.com/BlooodW)  
 - ✉️ [Email](mailto:yw4664@cumc.columbia.edu)  
 - 🎸 [Watch Me Playing](https://space.bilibili.com/35001001)
